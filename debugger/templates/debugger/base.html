@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}AI Misfires{% endblock %}</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+  <!-- Navbar -->
+  <header class="bg-white border-b shadow-sm">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+      <a href="/" class="text-xl font-semibold text-blue-600">
+        🤖 AI Misfires
+      </a>
+
+      <button id="menu-toggle" class="sm:hidden text-gray-600 hover:text-blue-600 focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2"
+             viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      <nav id="nav-links" class="hidden sm:flex gap-6 text-sm text-gray-700 font-medium">
+        <a href="/" class="hover:text-blue-600">Home</a>
+        <a href="{% url 'about' %}" class="hover:text-blue-600">About</a>
+        <a href="https://github.com" target="_blank" class="hover:text-blue-600">GitHub</a>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="sm:hidden hidden px-4 pb-4">
+      <a href="/" class="block py-2 text-gray-700 hover:text-blue-600">Home</a>
+      <a href="{% url 'about' %}" class="block py-2 text-gray-700 hover:text-blue-600">About</a>
+      <a href="https://github.com" target="_blank" class="block py-2 text-gray-700 hover:text-blue-600">GitHub</a>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-5xl mx-auto px-4 py-8">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-16 border-t border-gray-200 text-center text-sm text-gray-500 py-6">
+    <a href="{% url 'about' %}" class="text-blue-600 hover:underline">About This App</a><br>
+    Built with 💡 by True Nguyen —
+    <a href="https://github.com" class="text-blue-500 hover:underline" target="_blank">View on GitHub</a>
+  </footer>
+
+  <!-- Mobile Menu Script -->
+  <script>
+    const toggleBtn = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    toggleBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+</body>
+</html>
